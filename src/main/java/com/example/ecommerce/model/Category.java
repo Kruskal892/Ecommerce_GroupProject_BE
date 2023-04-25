@@ -1,27 +1,27 @@
 package com.example.ecommerce.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "category")
 public class Category {
     @Id
-    private long id;
+    private Integer categoryId;
     private String categoryName;
 
-    public long getId() {
-        return id;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getName() {
+    public String getCategoryName() {
         return categoryName;
     }
 
-    public void setName(String name) {
-        this.categoryName = name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

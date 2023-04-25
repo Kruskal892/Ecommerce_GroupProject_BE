@@ -22,6 +22,8 @@ public class Product {
                     @JoinColumn(name = "image_id")
             }
     )
+
+
     private Set<ImageModel> productImg;
 
     public Set<ImageModel> getProductImg() {

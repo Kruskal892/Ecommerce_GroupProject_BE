@@ -1,7 +1,7 @@
 package com.example.ecommerce.service;
 
 import com.example.ecommerce.configuration.JwtRequestFilter;
-import com.example.ecommerce.dao.OrderDetailsRepository;
+import com.example.ecommerce.dao.OrderDetailsDAO;
 import com.example.ecommerce.dao.ProductDAO;
 import com.example.ecommerce.dao.UserDao;
 import com.example.ecommerce.model.*;
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class OrderDetailService {
     @Autowired
-    private OrderDetailsRepository orderDetailsRepository;
+    private OrderDetailsDAO orderDetailsDAO;
     @Autowired
     private ProductDAO productDAO;
     @Autowired
@@ -40,7 +40,7 @@ public class OrderDetailService {
                     product,
                     user
             );
-            orderDetailsRepository.save(orderDetail);
+            orderDetailsDAO.save(orderDetail);
         }
     }
 }
