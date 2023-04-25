@@ -1,6 +1,8 @@
 package com.example.ecommerce.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "category")
@@ -8,6 +10,7 @@ public class Category {
     @Id
     private Integer categoryId;
     private String categoryName;
+
 
     public Integer getCategoryId() {
         return categoryId;

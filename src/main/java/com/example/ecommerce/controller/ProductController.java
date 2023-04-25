@@ -51,7 +51,6 @@ public class ProductController {
     @GetMapping({"/getAllProducts"})
     public List<Product> getAllProducts(@RequestParam(defaultValue = "0") int pageCount, @RequestParam(defaultValue = "") String searchKey) {
         List<Product> result  = productService.getAllProducts(pageCount, searchKey);
-//        System.out.println(result.size());
         return result;
     }
 
@@ -59,6 +58,7 @@ public class ProductController {
     public Product getProductDetailsById(@PathVariable("id") Integer id) {
         return productService.getProductDetailsById(id);
     }
+
 
     @PreAuthorize("hasRole('Admin')")
     @DeleteMapping({"/deleteProducts/{id}"})
