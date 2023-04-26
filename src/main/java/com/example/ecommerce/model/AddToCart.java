@@ -13,6 +13,10 @@ public class AddToCart {
     @OneToOne
     private User user;
 
+    public AddToCart() {
+
+    }
+
     public Integer getCartId() {
         return cartId;
     }

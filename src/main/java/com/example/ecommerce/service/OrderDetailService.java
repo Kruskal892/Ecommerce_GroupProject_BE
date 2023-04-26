@@ -1,6 +1,7 @@
 package com.example.ecommerce.service;
 
 import com.example.ecommerce.configuration.JwtRequestFilter;
+import com.example.ecommerce.dao.AddToCartDAO;
 import com.example.ecommerce.dao.OrderDetailsDAO;
 import com.example.ecommerce.dao.ProductDAO;
 import com.example.ecommerce.dao.UserDao;
@@ -18,10 +19,12 @@ public class OrderDetailService {
     private ProductDAO productDAO;
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private AddToCartDAO addToCartDAO;
 
     private static final String ORDER_PLACE = "Placed";
 
-    public void placeOrder(OrderInput orderInput) {
+    public void placeOrder(OrderInput orderInput, boolean isCartCheckout) {
         List<CountProductQuantity> countProductQuantityList = orderInput.getCountProductQuantityList();
 
         for (CountProductQuantity o : countProductQuantityList) {
@@ -40,6 +43,11 @@ public class OrderDetailService {
                     product,
                     user
             );
+
+            if (!isCartCheckout){
+                List<AddToCart> carts = addToCartDAO.findByUser(user);
+                carts.stream().forEach(x -> addToCartDAO.deleteById(x.getCartId()));
+            }
             orderDetailsDAO.save(orderDetail);
         }
     }

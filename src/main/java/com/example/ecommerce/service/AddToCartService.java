@@ -10,6 +10,9 @@ import com.example.ecommerce.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AddToCartService {
     @Autowired
@@ -26,11 +29,26 @@ public class AddToCartService {
         if (username != null) {
             user = userDao.findById(username).get();
         }
+        List<AddToCart> cartList = addToCartDAO.findByUser(user);
+        List<AddToCart> filteredList = cartList.stream().filter(x -> x.getProduct().getId() == id).collect(Collectors.toList());
 
+        if (filteredList.size() > 0) {
+            return null;
+        }
         if (product != null && user != null) {
             AddToCart cart = new AddToCart(product, user);
             return addToCartDAO.save(cart);
         }
         return null;
+    }
+
+    public List<AddToCart> getCartDetails() {
+        String username = JwtRequestFilter.CURRENT_USER;
+        User user =userDao.findById(username).get();
+        return addToCartDAO.findByUser(user);
+    }
+
+    public void deleteCartItem(Integer cartId){
+        addToCartDAO.deleteById(cartId);
     }
 }
