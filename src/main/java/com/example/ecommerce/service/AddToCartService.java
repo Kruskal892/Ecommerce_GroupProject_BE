@@ -44,11 +44,11 @@ public class AddToCartService {
 
     public List<AddToCart> getCartDetails() {
         String username = JwtRequestFilter.CURRENT_USER;
-        User user =userDao.findById(username).get();
+        User user = userDao.findById(username).get();
         return addToCartDAO.findByUser(user);
     }
 
-    public void deleteCartItem(Integer cartId){
+    public void deleteCartItem(Integer cartId) {
         addToCartDAO.deleteById(cartId);
     }
 }

@@ -13,6 +13,7 @@ import java.util.List;
 
 @Service
 public class OrderDetailService {
+    private static final String ORDER_PLACE = "Placed";
     @Autowired
     private OrderDetailsDAO orderDetailsDAO;
     @Autowired
@@ -21,8 +22,6 @@ public class OrderDetailService {
     private UserDao userDao;
     @Autowired
     private AddToCartDAO addToCartDAO;
-
-    private static final String ORDER_PLACE = "Placed";
 
     public void placeOrder(OrderInput orderInput, boolean isCartCheckout) {
         List<CountProductQuantity> countProductQuantityList = orderInput.getCountProductQuantityList();
@@ -44,7 +43,7 @@ public class OrderDetailService {
                     user
             );
 
-            if (!isCartCheckout){
+            if (!isCartCheckout) {
                 List<AddToCart> carts = addToCartDAO.findByUser(user);
                 carts.stream().forEach(x -> addToCartDAO.deleteById(x.getCartId()));
             }

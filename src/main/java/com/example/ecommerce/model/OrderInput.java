@@ -8,16 +8,15 @@ public class OrderInput {
     private String address;
     private String contactNumber;
     private String email;
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    private List<CountProductQuantity> countProductQuantityList;
 
     public String getEmail() {
         return email;
     }
 
-    private List<CountProductQuantity> countProductQuantityList;
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getFullName() {
         return fullName;

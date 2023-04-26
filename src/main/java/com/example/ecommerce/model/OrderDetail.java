@@ -11,23 +11,13 @@ public class OrderDetail {
     private String orderAddress;
     private String orderContactNumber;
     private String email;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     private String orderStatus;
     private Double orderQuantity;
     @OneToOne
     private Product product;
     @OneToOne
     private User user;
-
-    public OrderDetail(String orderFullName, String orderAddress, String orderContactNumber,String email,  String orderStatus, Double orderQuantity, Product product, User user) {
+    public OrderDetail(String orderFullName, String orderAddress, String orderContactNumber, String email, String orderStatus, Double orderQuantity, Product product, User user) {
         this.orderFullName = orderFullName;
         this.orderAddress = orderAddress;
         this.orderContactNumber = orderContactNumber;
@@ -38,6 +28,13 @@ public class OrderDetail {
         this.user = user;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Product getProduct() {
         return product;

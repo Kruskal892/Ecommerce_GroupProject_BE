@@ -50,7 +50,7 @@ public class ProductController {
 
     @GetMapping({"/getAllProducts"})
     public List<Product> getAllProducts(@RequestParam(defaultValue = "0") int pageCount, @RequestParam(defaultValue = "") String searchKey) {
-        List<Product> result  = productService.getAllProducts(pageCount, searchKey);
+        List<Product> result = productService.getAllProducts(pageCount, searchKey);
         return result;
     }
 

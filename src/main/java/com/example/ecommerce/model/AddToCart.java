@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class AddToCart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Integer cartId;
+    private Integer cartId;
     @OneToOne
     private Product product;
     @OneToOne
@@ -15,6 +15,11 @@ public class AddToCart {
 
     public AddToCart() {
 
+    }
+
+    public AddToCart(Product product, User user) {
+        this.product = product;
+        this.user = user;
     }
 
     public Integer getCartId() {
@@ -38,11 +43,6 @@ public class AddToCart {
     }
 
     public void setUser(User user) {
-        this.user = user;
-    }
-
-    public AddToCart(Product product, User user) {
-        this.product = product;
         this.user = user;
     }
 }

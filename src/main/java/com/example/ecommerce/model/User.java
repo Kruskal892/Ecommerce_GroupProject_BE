@@ -14,6 +14,16 @@ public class User {
     private String userAddress;
     private String userEmail;
     private String userPhone;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLE",
+            joinColumns = {
+                    @JoinColumn(name = "USER_ID")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "ROLE_ID")
+            }
+    )
+    private Set<Role> role;
 
     public String getUserEmail() {
         return userEmail;
@@ -38,18 +48,6 @@ public class User {
     public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
     }
-
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLE",
-            joinColumns = {
-                    @JoinColumn(name = "USER_ID")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "ROLE_ID")
-            }
-    )
-    private Set<Role> role;
 
     public String getUserName() {
         return userName;

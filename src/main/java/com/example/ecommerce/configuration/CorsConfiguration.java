@@ -8,9 +8,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfiguration {
 
-    private static final String GET_METHOD= "GET";
+    private static final String GET_METHOD = "GET";
     private static final String POST_METHOD = "POST";
-    private static final String PUT_METHOD= "PUT";
+    private static final String PUT_METHOD = "PUT";
     private static final String DELETE_METHOD = "DELETE";
 
     @Bean

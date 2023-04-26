@@ -30,7 +30,7 @@ public class AddToCartController {
 
     @PreAuthorize("hasRole('User')")
     @DeleteMapping({"/deleteCartItem/{cartId}"})
-    public void deleteItemInCart(@PathVariable (name = "cartId") Integer carId) {
+    public void deleteItemInCart(@PathVariable(name = "cartId") Integer carId) {
         addToCartService.deleteCartItem(carId);
     }
 }
