@@ -28,6 +28,10 @@ public class OrderDetail {
         this.user = user;
     }
 
+    public OrderDetail() {
+
+    }
+
     public String getEmail() {
         return email;
     }
