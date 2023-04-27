@@ -5,7 +5,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "category")
 public class Category {
     @Id
     private Integer categoryId;

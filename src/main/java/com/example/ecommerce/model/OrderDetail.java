@@ -13,9 +13,9 @@ public class OrderDetail {
     private String email;
     private String orderStatus;
     private Double orderQuantity;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Product product;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private User user;
     public OrderDetail(String orderFullName, String orderAddress, String orderContactNumber, String email, String orderStatus, Double orderQuantity, Product product, User user) {
         this.orderFullName = orderFullName;
@@ -26,6 +26,10 @@ public class OrderDetail {
         this.orderQuantity = orderQuantity;
         this.product = product;
         this.user = user;
+    }
+
+    public OrderDetail() {
+
     }
 
     public String getEmail() {
