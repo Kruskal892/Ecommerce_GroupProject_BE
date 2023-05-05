@@ -1,4 +1,5 @@
 # Ecommerce_GroupProject_BE
+Before run the project, import the database from the database folder to  your my sql workbench
 Project Notes:
 - For login as admin account: 
 admin123
